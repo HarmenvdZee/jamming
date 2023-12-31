@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import styles from "./styles/App.module.css";
 import Playlist from "./components/Playlist";
 import SearchBar from "./components/SearchBar";
 import SearchResult from "./components/SearchResult";
@@ -9,8 +9,15 @@ function App() {
   const [playlistSongs, setPlaylistSongs] = useState([]);
   const [searchSongs, setSearchSongs] = useState([]);
 
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      Spotify.getAccessToken();
+    });
+  }, []);
+
   const handleSearch = (text) => {
     Spotify.search(text).then((result) => {
+      console.log(result);
       setSearchSongs(result);
     });
   };
@@ -38,18 +45,22 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>test</h1>
+    <div className={styles.app}>
+      <h1 className={styles.h1}>Jamming</h1>
       <SearchBar handleSearch={handleSearch} />
-      <SearchResult
-        songs={searchSongs}
-        handleAddToPlaylist={handleAddToPlaylist}
-      />
-      <Playlist
-        songs={playlistSongs}
-        handleRemoveFromPlaylist={handleRemoveFromPlaylist}
-        handleSaveToSpotify={handleSaveToSpotify}
-      />
+      <div className={styles.container}>
+        <SearchResult
+          className={styles.searchResult}
+          songs={searchSongs}
+          handleAddToPlaylist={handleAddToPlaylist}
+        />
+        <Playlist
+          className={styles.playlist}
+          songs={playlistSongs}
+          handleRemoveFromPlaylist={handleRemoveFromPlaylist}
+          handleSaveToSpotify={handleSaveToSpotify}
+        />
+      </div>
     </div>
   );
 }

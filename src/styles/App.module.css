@@ -1,0 +1,14 @@
+h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.app {
+  margin: 10px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}

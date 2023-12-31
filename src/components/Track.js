@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/Track.module.css";
 
 function Track({ song, buttonSign, handleButtonClick }) {
   const handleClick = () => {
@@ -6,12 +7,16 @@ function Track({ song, buttonSign, handleButtonClick }) {
   };
 
   return (
-    <li>
-      <h3>{song.title}</h3>
-      <p>
-        {song.artist} | {song.album}
-      </p>
-      <button onClick={handleClick}>{buttonSign}</button>
+    <li className={styles.track}>
+      <div className={styles.trackInfo}>
+        <h3>{song.name}</h3>
+        <p>
+          {song.artist} | {song.album}
+        </p>
+      </div>
+      <button className={styles.button} onClick={handleClick}>
+        {buttonSign}
+      </button>
     </li>
   );
 }
