@@ -23,15 +23,15 @@ function Playlist({ songs, handleRemoveFromPlaylist, handleSaveToSpotify }) {
         onChange={nameChange}
       />
       <br />
-      <button className={styles.button} onClick={onButtonClick}>
-        Save playlist to Spotify
-      </button>
-      <br />
       <Tracklist
         songs={songs}
         handleButtonClick={handleRemoveFromPlaylist}
         buttonSign="-"
       />
+      <br />
+      <button className={styles.button} onClick={onButtonClick}>
+        Save playlist to Spotify
+      </button>
     </div>
   );
 }

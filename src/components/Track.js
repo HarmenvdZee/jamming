@@ -11,7 +11,7 @@ function Track({ song, buttonSign, handleButtonClick }) {
       <div className={styles.trackInfo}>
         <h3>{song.name}</h3>
         <p>
-          {song.artist} | {song.album}
+          {song.artist} <br /> {song.album}
         </p>
       </div>
       <button className={styles.button} onClick={handleClick}>
