@@ -17,7 +17,6 @@ function App() {
 
   const handleSearch = (text) => {
     Spotify.search(text).then((result) => {
-      console.log(result);
       setSearchSongs(result);
     });
   };
